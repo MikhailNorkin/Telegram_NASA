@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 
 # Задание 11. Скачайте EPIC-фото
-def fetch_spacex_last_launch(file_name, url, token):
+def fetch_spacex_day(file_name, url, token):
     new_path = os.path.join('C:/Work/Devman/Telegram/NewImages11', file_name)
     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
     payload = {"api_key": token}
@@ -32,7 +32,7 @@ def main():
             url = url + data_part + '/'
         url = url + 'png/' + jpg_url['image'] + '.png'
         file_name = 'spacex' + str(jpg_number) + '.png' 
-        fetch_spacex_last_launch(file_name, url, token)
+        fetch_spacex_day(file_name, url, token)
 
 
 if __name__ == '__main__':
