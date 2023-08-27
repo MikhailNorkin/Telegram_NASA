@@ -20,4 +20,3 @@ if name_image == "":
 else:
     file_path = 'NewImages/' + name_image
 bot.send_document(chat_id='@NASA_images_2023', document=open(file_path, 'rb'))
-

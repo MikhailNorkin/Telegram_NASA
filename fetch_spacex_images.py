@@ -18,8 +18,9 @@ def fetch_spacex_last_launch(launch):
 
 def main(launch):
     list_jpgs = fetch_spacex_last_launch(launch)
+    name_folder = download.folder("Images")
     for jpg_number, jpg_url in enumerate(list_jpgs):
-        new_path = os.path.join('C:\Work\Devman\Telegram_NASA\images', 'spacex' + str(jpg_number) + '.jpeg')
+        new_path = os.path.join(name_folder, 'spacex' + str(jpg_number) + '.jpeg')
         download.download_image(jpg_url, new_path)
 
 

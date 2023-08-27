@@ -18,8 +18,8 @@ list_files = []
 while True:
     list_count = len(list_files)
     if list_count > 0:
-        put = 'NewImages/' + list_files[0]
-        bot.send_document(chat_id='@NASA_images_2023', document=open(put, 'rb'))
+        patch_image = 'NewImages/' + list_files[0]
+        bot.send_document(chat_id='@NASA_images_2023', document=open(patch_image, 'rb'))
         del list_files[0]
         time.sleep(seconds_sleep)
     else:

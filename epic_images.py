@@ -6,11 +6,13 @@ import urllib.parse
 import json
 import argparse
 import datetime as DT
+import download
 from dotenv import load_dotenv
 
 
 def fetch_spacex_day(file_name, url, token):
-    new_path = os.path.join('C:/Work/Devman/Telegram_NASA/NewImages11', file_name)
+    name_folder = download.folder("NewImages11")
+    new_path = os.path.join(name_folder, file_name)
     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
     payload = {"api_key": token}
     response = requests.get(url, headers=headers, params=payload)
