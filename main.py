@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 # Задание 11. Скачайте EPIC-фото
 def fetch_spacex_day(file_name, url, token):
-    new_path = os.path.join('C:/Work/Devman/Telegram/NewImages11', file_name)
+    new_path = os.path.join('C:/Work/Devman/Telegram_NASA/NewImages11', file_name)
     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
     payload = {"api_key": token}
     response = requests.get(url, headers=headers, params=payload)
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 #         url = url + data_part + '/'
 #     url = url + 'png/' + jpg_url['image'] + '.png'
 #     file_name = 'spacex' + str(jpg_number) + '.png'  
-#     new_path = os.path.join('C:/Work/Devman/Telegram/NewImages11', file_name)
+#     new_path = os.path.join('C:/Work/Devman/Telegram_NASA/NewImages11', file_name)
 #     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
 #     payload = {"api_key": API_KEY}
 #     response = requests.get(url, headers=headers, params=payload)
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 #     url_split = urlsplit(jpg_url_name)
 #     extension_url = os.path.splitext(url_split[2])[1]
 #     file_name = 'spacex' + str(jpg_number) + extension_url
-#     new_path = os.path.join('C:/Work/Devman/Telegram/NewImages', file_name)
+#     new_path = os.path.join('C:/Work/Devman/Telegram_NASA/NewImages', file_name)
 #     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
 #     response = requests.get(jpg_url_name, headers=headers)
 #     response.raise_for_status()
@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
 #     list_jpgs = fetch_spacex_last_launch()
 #     for jpg_number, jpg_url in enumerate(list_jpgs):
-#         new_path = os.path.join('C:\Work\Devman\Telegram\images', 'spacex' + str(jpg_number) + '.jpeg')
+#         new_path = os.path.join('C:\Work\Devman\Telegram_NASA\images', 'spacex' + str(jpg_number) + '.jpeg')
 #         headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
 #         response = requests.get(jpg_url, headers=headers)
 #         response.raise_for_status()
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 # response.raise_for_status()
 # list_jpgs = response.json()['links']['flickr']['original']
 # for jpg_number, jpg_url in enumerate(list_jpgs):
-#     new_path = os.path.join('C:\Work\Devman\Telegram\images', 'spacex' + str(jpg_number) + '.jpeg')
+#     new_path = os.path.join('C:\Work\Devman\Telegram_NASA\images', 'spacex' + str(jpg_number) + '.jpeg')
 #     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
 #     response = requests.get(jpg_url, headers=headers)
 #     response.raise_for_status()
@@ -162,7 +162,7 @@ if __name__ == '__main__':
 #     except FileExistsError:
 #         pass
 
-#     download_picture("https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg", 'C:\Work\Devman\Telegram\Новая папка')
+#     download_picture("https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg", 'C:\Work\Devman\Telegram_NASA\Новая папка')
 
 
 # if __name__ == '__main__':
