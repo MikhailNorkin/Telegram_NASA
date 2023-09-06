@@ -4,7 +4,8 @@
 
 Для запуска у вас уже должен быть установлен Python 3.
 Скачайте код
-Установите зависимости командой `pip install -r requirements.txt`
+Установите зависимости командой 
+``` pip install -r requirements.txt ```
 
 ## Переменные окружения
 
@@ -13,16 +14,21 @@
 ## Описание работы с запуск скриптов
 
 Скрипт `telegram_image.py` - Публикует указанную фотографию в канал из папки `NewImages`. Если “какую” не указано, публикует случайную фотографию.<br/>
-Запуск скрипта: `python telegram_image.py -n <имя фото>`
+Запуск скрипта: 
+``` python telegram_image.py -n <имя фото> ```
 
 Скрипт `telegram_bot.py` - По умолчнию по одной фотографии автоматически из папки `NewImages` через каждые 4 часа в рандомном порядке. После того, как фотографии заканчиваются все начинается сначала. Время публикования фотографии в канале задается в переменной окружения TIME_SLEEP.<br/>
-Запуск скрипта: `python telegram_bot.py -s <время публикования в секундах>`
+Запуск скрипта: 
+``` python telegram_bot.py -s <время публикования в секундах> ```
 
 Скрипт `fetch_spacex_images.py` скачивает фотографии с запуска SpaceX с сайта `https://api.spacexdata.com/`.<br/> 
-Запуск скрипта: `python fetch_spacex_images.py -l <ID запуска>`
+Запуск скрипта: 
+``` python fetch_spacex_images.py -l <ID запуска> ```
 
 Скрипт `epic_images.py` скачивает фотографии с сайта `https://api.nasa.gov/EPIC/api/natural` на указанную дату.<br/>
-Запуск скрипта: `python epic_images.py -d <дата (формат yyyy-mm-dd)>`
+Запуск скрипта: 
+``` python epic_images.py -d <дата (формат yyyy-mm-dd)> ```
 
 Скрипт `apod_images.py` скачивает 30 фотографий с сайта `https://api.nasa.gov/planetary/apod`
-Запуск скрипта: `python apod_images.py`
+Запуск скрипта: 
+``` python apod_images.py ```
