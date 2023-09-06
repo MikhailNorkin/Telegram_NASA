@@ -11,8 +11,8 @@ from dotenv import load_dotenv
 
 
 def fetch_spacex_day(file_name, url, token):
-    name_folder = download.folder("NewImages11")
-    new_path = os.path.join(name_folder, file_name)
+    folder_name = download.folder("NewImages11")
+    new_path = os.path.join(folder_name, file_name)
     headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
     payload = {"api_key": token}
     response = requests.get(url, headers=headers, params=payload)

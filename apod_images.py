@@ -10,17 +10,16 @@ from dotenv import load_dotenv
 
 
 def get_json():
-    token_API = os.getenv("API_KEY")
+    API_token = os.getenv("API_KEY")
     url = 'https://api.nasa.gov/planetary/apod'
-    query_params = {'api_key': token_API, 'count': '30'}
-    params = urllib.parse.urlencode(query_params)
-    response = requests.get(url, params=params)
+    query_params = {'api_key': API_token, 'count': '30'}
+    response = requests.get(url, params=query_params)
     return json.loads(response.text)
 
 
 def main():
     load_dotenv()
-    name_folder = download.folder("NewImages")
+    folder_name = download.folder("NewImages")
     json_data = get_json()
     for jpg_number, jpg_url in enumerate(json_data):
         media_type = jpg_url['media_type']
@@ -29,7 +28,7 @@ def main():
             url_split = urlsplit(jpg_url_name)
             extension_url = os.path.splitext(url_split[2])[1]
             file_name = 'spacex' + str(jpg_number) + extension_url
-            new_path = os.path.join(name_folder, file_name)
+            new_path = os.path.join(folder_name, file_name)
             download.download_image(jpg_url_name, new_path)
 
 
