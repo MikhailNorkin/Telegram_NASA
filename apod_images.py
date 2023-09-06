@@ -9,7 +9,7 @@ from urllib.parse import urlsplit
 from dotenv import load_dotenv
 
 
-def get_json():
+def get_data_data():
     API_token = os.getenv("API_KEY")
     url = 'https://api.nasa.gov/planetary/apod'
     query_params = {'api_key': API_token, 'count': '30'}
@@ -20,8 +20,8 @@ def get_json():
 def main():
     load_dotenv()
     folder_name = download.folder("NewImages")
-    json_data = get_json()
-    for jpg_number, jpg_url in enumerate(json_data):
+    data_nasa = get_nasa_data()
+    for jpg_number, jpg_url in enumerate(data_nasa):
         media_type = jpg_url['media_type']
         if media_type == 'image':
             jpg_url_name = jpg_url['url']
