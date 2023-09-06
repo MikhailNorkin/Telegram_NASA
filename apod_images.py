@@ -14,7 +14,7 @@ def get_json():
     url = 'https://api.nasa.gov/planetary/apod'
     query_params = {'api_key': API_token, 'count': '30'}
     response = requests.get(url, params=query_params)
-    return json.loads(response.text)
+    return response.json()
 
 
 def main():
