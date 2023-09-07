@@ -11,6 +11,5 @@ def download_image(jpg_url_name, path_file):
 
 
 def folder(name_folder):
-    if not os.path.exists(name_folder):
-        os.makedirs(name_folder)
+    os.makedirs(name_folder, exist_ok=True)
     return name_folder
