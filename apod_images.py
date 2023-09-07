@@ -28,8 +28,8 @@ def main():
             url_split = urlsplit(jpg_url_name)
             extension_url = os.path.splitext(url_split[2])[1]
             file_name = 'spacex' + str(jpg_number) + extension_url
-            new_path = os.path.join(folder_name, file_name)
-            download.download_image(jpg_url_name, new_path)
+            path_file = os.path.join(folder_name, file_name)
+            download.download_image(jpg_url_name, path_file)
 
 
 if __name__ == '__main__':
