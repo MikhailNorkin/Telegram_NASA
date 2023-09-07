@@ -28,7 +28,7 @@ def main():
         jpg_url_name = jpg_url['url']
         url_split = urlsplit(jpg_url_name)
         extension_url = os.path.splitext(url_split[2])[1]
-        file_name = 'spacex' + str(jpg_number) + extension_url
+        file_name = "spacex {jpg_number} {extension_url}".format(jpg_number=jpg_number, extension_url=extension_url)
         path_file = os.path.join(folder_name, file_name)
         download.download_image(jpg_url_name, path_file)
 
