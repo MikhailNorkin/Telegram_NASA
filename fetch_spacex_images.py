@@ -18,7 +18,8 @@ def fetch_spacex_last_launch(launch):
 
 def main(launch):
     list_jpgs = fetch_spacex_last_launch(launch)
-    folder_name = download.folder("Images")
+    folder_name = "Images"
+    os.makedirs(folder_name, exist_ok=True) 
     for jpg_number, jpg_url in enumerate(list_jpgs):
         new_path = os.path.join(folder_name, 'spacex' + str(jpg_number) + '.jpeg')
         download.download_image(jpg_url, new_path)

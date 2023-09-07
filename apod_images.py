@@ -19,7 +19,8 @@ def get_data_nasa():
 
 def main():
     load_dotenv()
-    folder_name = download.folder("NewImages")
+    folder_name = "NewImages"
+    os.makedirs(folder_name, exist_ok=True) 
     data_nasa = get_data_nasa()
     for jpg_number, jpg_url in enumerate(data_nasa):
         media_type = jpg_url['media_type']
