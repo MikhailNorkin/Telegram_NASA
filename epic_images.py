@@ -6,7 +6,6 @@ import urllib.parse
 import json
 import argparse
 import datetime as DT
-import download
 from dotenv import load_dotenv
 
 

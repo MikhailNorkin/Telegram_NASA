@@ -2,8 +2,6 @@
 
 import requests
 import os
-import urllib.parse
-import json
 import download
 from urllib.parse import urlsplit
 from dotenv import load_dotenv

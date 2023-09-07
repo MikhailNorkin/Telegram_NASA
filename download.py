@@ -1,5 +1,4 @@
 import requests
-import os
 
 
 def download_image(jpg_url_name, path_file):
