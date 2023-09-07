@@ -23,13 +23,14 @@ def main():
     data_nasa = get_data_nasa()
     for jpg_number, jpg_url in enumerate(data_nasa):
         media_type = jpg_url['media_type']
-        if media_type == 'image':
-            jpg_url_name = jpg_url['url']
-            url_split = urlsplit(jpg_url_name)
-            extension_url = os.path.splitext(url_split[2])[1]
-            file_name = 'spacex' + str(jpg_number) + extension_url
-            path_file = os.path.join(folder_name, file_name)
-            download.download_image(jpg_url_name, path_file)
+        if media_type != 'image':
+            continue
+        jpg_url_name = jpg_url['url']
+        url_split = urlsplit(jpg_url_name)
+        extension_url = os.path.splitext(url_split[2])[1]
+        file_name = 'spacex' + str(jpg_number) + extension_url
+        path_file = os.path.join(folder_name, file_name)
+        download.download_image(jpg_url_name, path_file)
 
 
 if __name__ == '__main__':
