@@ -18,7 +18,7 @@ list_files = []
 while True:
     list_count = len(list_files)
     if list_count > 0:
-        patch_image = 'NewImages/' + list_files[0]
+        patch_image = """NewImages/{list_files}""".format(list_files=list_files[0])
         bot.send_document(chat_id='@NASA_images_2023', document=open(patch_image, 'rb'))
         del list_files[0]
         time.sleep(seconds_sleep)

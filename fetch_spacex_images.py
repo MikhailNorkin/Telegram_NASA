@@ -10,7 +10,7 @@ def fetch_spacex_last_launch(launch):
     if launch == "":
         adres = requests.get('https://api.spacexdata.com/v5/launches/5eb87d47ffd86e000604b38a')
     else:
-        adres = requests.get('https://api.spacexdata.com/v5/launches/'+launch)
+        adres = requests.get("""https://api.spacexdata.com/v5/launches/+{launch}""".format(launch=launch))
     response = requests.get(adres.url)
     response.raise_for_status()
     return response.json()['links']['flickr']['original']
@@ -24,7 +24,7 @@ def main():
     folder_name = "Images"
     os.makedirs(folder_name, exist_ok=True) 
     for jpg_number, jpg_url in enumerate(list_jpgs):
-        new_path = os.path.join(folder_name, 'spacex' + str(jpg_number) + '.jpeg')
+        new_path = os.path.join(folder_name, """spacex{jpg_number}.jpeg""".format(jpg_number=str(jpg_number)))
         download.download_image(jpg_url, new_path)
 
 
