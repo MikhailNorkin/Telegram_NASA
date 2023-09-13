@@ -26,9 +26,3 @@ while True:
         for root, dirs, files_nasa in os.walk('NewImages/'):
             random.shuffle(files_nasa)               
 
-
-
-
-
-# Задача 17.Опубликуйте текст в Telegram-канал
-# bot.send_message(chat_id='@NASA_images_2023', text="I'm sorry Dave I'm afraid I can't do that.")

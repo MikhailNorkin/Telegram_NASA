@@ -7,11 +7,12 @@ import download
 
 
 def fetch_spacex_last_launch(launch):
+    url_def = 'https://api.spacexdata.com/v5/launches/'
     if launch == "":
-        adres = requests.get('https://api.spacexdata.com/v5/launches/5eb87d47ffd86e000604b38a')
+        url_spacex=f"{url_def}5eb87d47ffd86e000604b38a"
     else:
-        adres = requests.get("""https://api.spacexdata.com/v5/launches/+{launch}""".format(launch=launch))
-    response = requests.get(adres.url)
+        url_spacex=f"{url_def}{launch}"    
+    response = requests.get(url_spacex)
     response.raise_for_status()
     return response.json()['links']['flickr']['original']
 
