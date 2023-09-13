@@ -28,8 +28,8 @@ def main(data_launch):
     query_params = {'date': data_launch, 'api_key': token}
     params = urllib.parse.urlencode(query_params)
     response = requests.get(url, params=params)
-    json_data = json.loads(response.text)
-    for jpg_number, jpg_url in enumerate(json_data):
+    nasa_pictures = json.loads(response.text)
+    for jpg_number, jpg_url in enumerate(nasa_pictures):
         url = 'https://api.nasa.gov/EPIC/archive/natural/'
         for data_part in jpg_url['date'].split(' ')[0].split('-'):
             url = url + data_part + '/'
