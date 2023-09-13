@@ -27,7 +27,7 @@ def main(launch):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Image search on nasa.gov on spacexdata.com')
     parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="")
     arg = parser.parse_args()
     main(arg.launch)

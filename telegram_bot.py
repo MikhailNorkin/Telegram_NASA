@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.getenv("TOKEN_TELEGRAM")
 bot = telegram.Bot(token=token)
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Uploading images to telegram bot @NASA_images_2023')
 parser.add_argument("-s", "--seconds_sleep", type=int, help="Enter seconds to sleep", default=os.getenv("TIME_SLEEP"))
 arg = parser.parse_args()
 seconds_sleep = arg.seconds_sleep

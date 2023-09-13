@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.getenv("TOKEN_TELEGRAM")
 bot = telegram.Bot(token=token)
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Uploading image to telegram bot @NASA_images_2023')
 parser.add_argument("-n", "--name_image", type=str, help="Enter name image", default="")
 arg = parser.parse_args()
 name_image = arg.name_image
