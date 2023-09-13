@@ -18,15 +18,14 @@ def main():
     files_nasa = []
     while True:
         list_count = len(files_nasa)
-        if list_count > 0:
+        if not list_count:
+            for root, dirs, files_nasa in os.walk('NewImages/'):
+                random.shuffle(files_nasa)   
+        else:
             patch_image = """NewImages/{files_nasa}""".format(files_nasa=files_nasa[0])
             bot.send_document(chat_id='@NASA_images_2023', document=open(patch_image, 'rb'))
             del files_nasa[0]
-            time.sleep(seconds_sleep)
-        else:
-            for root, dirs, files_nasa in os.walk('NewImages/'):
-                random.shuffle(files_nasa)               
-
+            time.sleep(seconds_sleep)            
 
 if __name__ == '__main__':
     main()
