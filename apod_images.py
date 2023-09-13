@@ -9,7 +9,8 @@ from dotenv import load_dotenv
 
 def get_nasa_pictures(api_token):
     url = 'https://api.nasa.gov/planetary/apod'
-    query_params = {'api_key': api_token, 'count': '30'}
+    number_photos = 30
+    query_params = {'api_key': api_token, 'count': number_photos}
     response = requests.get(url, params=query_params)
     return response.json()
 
