@@ -13,12 +13,14 @@ def fetch_spacex_last_launch(launch):
         adres = requests.get('https://api.spacexdata.com/v5/launches/'+launch)
     response = requests.get(adres.url)
     response.raise_for_status()
-    print(response.text)
     return response.json()['links']['flickr']['original']
 
 
-def main(launch):
-    list_jpgs = fetch_spacex_last_launch(launch)
+def main():
+    parser = argparse.ArgumentParser(description='Image search on nasa.gov spacexdata.com')
+    parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="")
+    arg = parser.parse_args()
+    list_jpgs = fetch_spacex_last_launch(arg.launch)
     folder_name = "Images"
     os.makedirs(folder_name, exist_ok=True) 
     for jpg_number, jpg_url in enumerate(list_jpgs):
@@ -27,7 +29,4 @@ def main(launch):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Image search on nasa.gov on spacexdata.com')
-    parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="")
-    arg = parser.parse_args()
-    main(arg.launch)
+    main()

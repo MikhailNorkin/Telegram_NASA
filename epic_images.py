@@ -22,7 +22,11 @@ def fetch_spacex_day(file_name, url, token):
         file.write(response.content)
 
 
-def main(data_launch):
+def main():
+    parser = argparse.ArgumentParser(description='Image search on nasa.gov...')
+    parser.add_argument("-d", "--data_launch", type=str, help="Enter launch data (yyyy-mm-dd)", default="2020-12-25")
+    arg = parser.parse_args()
+    data_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
     load_dotenv()
     token = os.getenv("TOKEN_NASA")
     url = 'https://api.nasa.gov/EPIC/api/natural'
@@ -40,8 +44,4 @@ def main(data_launch):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Image search on nasa.gov...')
-    parser.add_argument("-d", "--data_launch", type=str, help="Enter launch data (yyyy-mm-dd)", default="2020-12-25")
-    arg = parser.parse_args()
-    data_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
-    main(data_launch)
+    main()
