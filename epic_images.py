@@ -9,7 +9,7 @@ import datetime as DT
 from dotenv import load_dotenv
 
 
-def fetch_spacex_day(file_name, url, token):
+def fetch_nasa_day(file_name, url, token):
     folder_name = "NewImages11"
     os.makedirs(folder_name, exist_ok=True) 
     new_path = os.path.join(folder_name, file_name)
@@ -38,7 +38,7 @@ def main():
             url = """{url}{data_part}/""".format(url=url,data_part=data_part)
         url = """{url}png/{jpg_url}.png""".format(url=url,jpg_url=jpg_url['image'])
         file_name = """spacex{jpg_number}.png""".format(jpg_number=str(jpg_number))
-        fetch_spacex_day(file_name, url, token)
+        fetch_nasa_day(file_name, url, token)
 
 
 if __name__ == '__main__':
