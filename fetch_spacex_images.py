@@ -20,10 +20,10 @@ def main():
     parser = argparse.ArgumentParser(description='Image search on nasa.gov spacexdata.com')
     parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="")
     arg = parser.parse_args()
-    list_jpgs = fetch_spacex_last_launch(arg.launch)
+    jpgs_spacex = fetch_spacex_last_launch(arg.launch)
     folder_name = "Images"
     os.makedirs(folder_name, exist_ok=True) 
-    for jpg_number, jpg_url in enumerate(list_jpgs):
+    for jpg_number, jpg_url in enumerate(jpgs_spacex):
         new_path = os.path.join(folder_name, """spacex{jpg_number}.jpeg""".format(jpg_number=str(jpg_number)))
         download.download_image(jpg_url, new_path)
 

@@ -14,17 +14,17 @@ parser = argparse.ArgumentParser(description='Uploading images to telegram bot @
 parser.add_argument("-s", "--seconds_sleep", type=int, help="Enter seconds to sleep", default=os.getenv("TIME_SLEEP"))
 arg = parser.parse_args()
 seconds_sleep = arg.seconds_sleep
-list_files = []
+files_nasa = []
 while True:
-    list_count = len(list_files)
+    list_count = len(files_nasa)
     if list_count > 0:
-        patch_image = """NewImages/{list_files}""".format(list_files=list_files[0])
+        patch_image = """NewImages/{files_nasa}""".format(files_nasa=files_nasa[0])
         bot.send_document(chat_id='@NASA_images_2023', document=open(patch_image, 'rb'))
-        del list_files[0]
+        del files_nasa[0]
         time.sleep(seconds_sleep)
     else:
-        for root, dirs, list_files in os.walk('NewImages/'):
-            random.shuffle(list_files)               
+        for root, dirs, files_nasa in os.walk('NewImages/'):
+            random.shuffle(files_nasa)               
 
 
 
