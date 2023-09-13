@@ -5,6 +5,7 @@ import os
 import urllib.parse
 import json
 import argparse
+import download
 import datetime as DT
 from dotenv import load_dotenv
 
@@ -13,12 +14,8 @@ def fetch_nasa_day(file_name, url, token):
     folder_name = "NewImages11"
     os.makedirs(folder_name, exist_ok=True) 
     new_path = os.path.join(folder_name, file_name)
-    headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot)'}
     payload = {"api_key": token}
-    response = requests.get(url, headers=headers, params=payload)
-    response.raise_for_status()
-    with open(new_path, 'wb') as file:
-        file.write(response.content)
+    download.download_image(url, new_path, payload)
 
 
 def main():
@@ -35,8 +32,8 @@ def main():
     for jpg_number, jpg_url in enumerate(nasa_pictures):
         url = 'https://api.nasa.gov/EPIC/archive/natural/'
         for data_part in jpg_url['date'].split(' ')[0].split('-'):
-            url = """{url}{data_part}/""".format(url=url,data_part=data_part)
-        url = """{url}png/{jpg_url}.png""".format(url=url,jpg_url=jpg_url['image'])
+            url = """{url}{data_part}/""".format(url=url, data_part=data_part)
+        url = """{url}png/{jpg_url}.png""".format(url=url, jpg_url=jpg_url['image'])
         file_name = """spacex{jpg_number}.png""".format(jpg_number=str(jpg_number))
         fetch_nasa_day(file_name, url, token)
 
