@@ -18,7 +18,7 @@ def main():
     load_dotenv()
     folder_name = "NewImages"
     os.makedirs(folder_name, exist_ok=True)
-    api_token = os.getenv("API_KEY")
+    api_token = os.getenv("API_KEY_NASA")
     nasa_pictures = get_nasa_pictures(api_token)
     for jpg_number, jpg_url in enumerate(nasa_pictures):
         media_type = jpg_url['media_type']
