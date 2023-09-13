@@ -12,6 +12,8 @@ def get_nasa_pictures(api_token):
     number_photos = 30
     query_params = {'api_key': api_token, 'count': number_photos}
     response = requests.get(url, params=query_params)
+    response.raise_for_status()
+    print(response.text)
     return response.json()
 
 

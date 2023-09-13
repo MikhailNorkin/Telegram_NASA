@@ -17,6 +17,7 @@ def fetch_spacex_day(file_name, url, token):
     payload = {"api_key": token}
     response = requests.get(url, headers=headers, params=payload)
     response.raise_for_status()
+    print(response.text)
     with open(new_path, 'wb') as file:
         file.write(response.content)
 

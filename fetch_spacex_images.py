@@ -13,6 +13,7 @@ def fetch_spacex_last_launch(launch):
         adres = requests.get('https://api.spacexdata.com/v5/launches/'+launch)
     response = requests.get(adres.url)
     response.raise_for_status()
+    print(response.text)
     return response.json()['links']['flickr']['original']
 
 
