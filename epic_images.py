@@ -17,7 +17,6 @@ def fetch_spacex_day(file_name, url, token):
     payload = {"api_key": token}
     response = requests.get(url, headers=headers, params=payload)
     response.raise_for_status()
-    print(response.text)
     with open(new_path, 'wb') as file:
         file.write(response.content)
 
@@ -30,8 +29,7 @@ def main():
     load_dotenv()
     token = os.getenv("TOKEN_NASA")
     url = 'https://api.nasa.gov/EPIC/api/natural'
-    query_params = {'date': data_launch, 'api_key': token}
-    params = urllib.parse.urlencode(query_params)
+    params = urllib.parse.urlencode({'date': data_launch, 'api_key': token})
     response = requests.get(url, params=params)
     nasa_pictures = json.loads(response.text)
     for jpg_number, jpg_url in enumerate(nasa_pictures):
