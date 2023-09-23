@@ -23,9 +23,12 @@ def main():
                 random.shuffle(files_nasa)   
         else:
             patch_image = """NewImages/{files_nasa}""".format(files_nasa=files_nasa[0])
-            bot.send_document(chat_id='@NASA_images_2023', document=open(patch_image, 'rb'))
+            with open(patch_image,'rb') as file_image:
+                bot.send_document(chat_id='@NASA_images_2023', document=file_image)
+            file_image.closed
             del files_nasa[0]
-            time.sleep(seconds_sleep)            
+            time.sleep(seconds_sleep)
+
 
 if __name__ == '__main__':
     main()

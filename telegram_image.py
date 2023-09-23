@@ -13,14 +13,17 @@ def main():
     parser = argparse.ArgumentParser(description='Uploading image to telegram bot @NASA_images_2023')
     parser.add_argument("-n", "--name_image", type=str, help="Enter name image", default="")
     arg = parser.parse_args()
-    name_image = arg.name_image
-    if name_image == "":
+    image_name = arg.name_image
+    if not image_name:
+        print("!")
         for root, dirs, list_files in os.walk('NewImages/'):
             random.shuffle(list_files)
             file_path = 'NewImages/' + list_files[0]
     else:
-        file_path = 'NewImages/' + name_image
-    bot.send_document(chat_id='@NASA_images_2023', document=open(file_path, 'rb'))
+        file_path = 'NewImages/' + image_name
+    with open(file_path,'rb') as file_image:
+        bot.send_document(chat_id='@NASA_images_2023', document=file_image)
+    file_image.closed
 
 
 if __name__ == '__main__':
