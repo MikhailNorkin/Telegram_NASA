@@ -23,6 +23,7 @@ def main():
     parser.add_argument("-d", "--data_launch", type=str, help="Enter launch data (yyyy-mm-dd)", default="2020-12-25")
     arg = parser.parse_args()
     date_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
+    
     load_dotenv()
     token = os.getenv("TOKEN_NASA")
     url = 'https://api.nasa.gov/EPIC/api/natural'
