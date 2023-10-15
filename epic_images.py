@@ -23,13 +23,16 @@ def main():
     parser.add_argument("-d", "--data_launch", type=str, help="Enter launch data (yyyy-mm-dd)", default="2020-12-25")
     arg = parser.parse_args()
     date_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
-    
+
     load_dotenv()
     token = os.getenv("TOKEN_NASA")
     url = 'https://api.nasa.gov/EPIC/api/natural'
     params = urllib.parse.urlencode({'date': date_launch, 'api_key': token})
     response = requests.get(url, params=params)
+    response.raise_for_status()
+    print(response.text)
     nasa_pictures = json.loads(response.text)
+    
     for jpg_number, jpg_url in enumerate(nasa_pictures):
         url = 'https://api.nasa.gov/EPIC/archive/natural/'
         for data_part in jpg_url['date'].split(' ')[0].split('-'):

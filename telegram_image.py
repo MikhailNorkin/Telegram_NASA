@@ -15,7 +15,6 @@ def main():
     arg = parser.parse_args()
     image_name = arg.name_image
     if not image_name:
-        print("!")
         for root, dirs, list_files in os.walk('NewImages/'):
             random.shuffle(list_files)
             file_path = 'NewImages/' + list_files[0]
