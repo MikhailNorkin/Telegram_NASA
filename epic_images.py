@@ -31,8 +31,8 @@ def main():
     response = requests.get(url, params=params)
     response.raise_for_status()
     print(response.text)
-    nasa_pictures = json.loads(response.text)
-    
+    nasa_pictures = response.json()
+
     for jpg_number, jpg_url in enumerate(nasa_pictures):
         url = 'https://api.nasa.gov/EPIC/archive/natural/'
         for data_part in jpg_url['date'].split(' ')[0].split('-'):
