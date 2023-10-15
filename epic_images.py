@@ -22,11 +22,11 @@ def main():
     parser = argparse.ArgumentParser(description='Image search on nasa.gov...')
     parser.add_argument("-d", "--data_launch", type=str, help="Enter launch data (yyyy-mm-dd)", default="2020-12-25")
     arg = parser.parse_args()
-    data_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
+    date_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
     load_dotenv()
     token = os.getenv("TOKEN_NASA")
     url = 'https://api.nasa.gov/EPIC/api/natural'
-    params = urllib.parse.urlencode({'date': data_launch, 'api_key': token})
+    params = urllib.parse.urlencode({'date': date_launch, 'api_key': token})
     response = requests.get(url, params=params)
     nasa_pictures = json.loads(response.text)
     for jpg_number, jpg_url in enumerate(nasa_pictures):
