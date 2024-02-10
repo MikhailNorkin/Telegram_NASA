@@ -25,7 +25,7 @@ def main():
     folder_name = "Images"
     os.makedirs(folder_name, exist_ok=True) 
     for jpg_number, jpg_url in enumerate(jpgs_spacex):
-        file_name = os.path.join(folder_name, """spacex{jpg_number}.jpeg""".format(jpg_number=str(jpg_number)))
+        file_name = os.path.join(folder_name, """spacex{jpg_number}.jpeg""".format(jpg_number=jpg_number))
         download.download_image(jpg_url, file_name)
 
 
