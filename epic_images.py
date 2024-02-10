@@ -35,9 +35,9 @@ def main():
 
     for jpg_number, jpg_url in enumerate(nasa_pictures):
         url = 'https://api.nasa.gov/EPIC/archive/natural/'
-        launch_date = jpg_url['date'].split(' ')[0].replace('-','/')
+        launch_date = jpg_url['date'].split(' ')[0].replace('-', '/')
         url = """{url}{launch_date}/png/{jpg_url}.png""".format(url=url, launch_date=launch_date, jpg_url=jpg_url['image'])
-        file_name = """spacex{jpg_number}.png""".format(jpg_number=str(jpg_number))
+        file_name = """spacex{jpg_number}.png""".format(jpg_number=jpg_number)
         fetch_nasa_day(file_name, url, token)
 
 
