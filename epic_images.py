@@ -22,12 +22,12 @@ def main():
     parser = argparse.ArgumentParser(description='Image search on nasa.gov...')
     parser.add_argument("-d", "--data_launch", type=str, help="Enter launch data (yyyy-mm-dd)", default="2020-12-25")
     arg = parser.parse_args()
-    date_launch = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
+    launch_date = DT.datetime.strptime(arg.data_launch, '%Y-%m-%d').date()
 
     load_dotenv()
     token = os.getenv("TOKEN_NASA")
     url = 'https://api.nasa.gov/EPIC/api/natural'
-    params = urllib.parse.urlencode({'date': date_launch, 'api_key': token})
+    params = urllib.parse.urlencode({'date': launch_date, 'api_key': token})
     response = requests.get(url, params=params)
     response.raise_for_status()
     print(response.text)
@@ -35,9 +35,8 @@ def main():
 
     for jpg_number, jpg_url in enumerate(nasa_pictures):
         url = 'https://api.nasa.gov/EPIC/archive/natural/'
-        for data_part in jpg_url['date'].split(' ')[0].split('-'):
-            url = """{url}{data_part}/""".format(url=url, data_part=data_part)
-        url = """{url}png/{jpg_url}.png""".format(url=url, jpg_url=jpg_url['image'])
+        launch_date = jpg_url['date'].split(' ')[0].replace('-','/')
+        url = """{url}{launch_date}/png/{jpg_url}.png""".format(url=url, launch_date = launch_date, jpg_url=jpg_url['image'])
         file_name = """spacex{jpg_number}.png""".format(jpg_number=str(jpg_number))
         fetch_nasa_day(file_name, url, token)
 
