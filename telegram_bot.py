@@ -15,18 +15,18 @@ def main():
     parser.add_argument("-s", "--seconds_sleep", type=int, help="Enter seconds to sleep", default=os.getenv("TIME_SLEEP"))
     arg = parser.parse_args()
     seconds_sleep = arg.seconds_sleep
-    files_nasa = []
+    nasa_files = []
     while True:
-        list_count = len(files_nasa)
+        list_count = len(nasa_files)
         if not list_count:
-            for root, dirs, files_nasa in os.walk('NewImages/'):
-                random.shuffle(files_nasa)   
+            for root, dirs, nasa_files in os.walk('NewImages/'):
+                random.shuffle(nasa_files)   
         else:
-            patch_image = """NewImages/{files_nasa}""".format(files_nasa=files_nasa[0])
+            patch_image = """NewImages/{nasa_files}""".format(nasa_files=nasa_files[0])
             with open(patch_image,'rb') as file_image:
                 bot.send_document(chat_id='@NASA_images_2023', document=file_image)
             file_image.closed
-            del files_nasa[0]
+            del nasa_files[0]
             time.sleep(seconds_sleep)
 
 
