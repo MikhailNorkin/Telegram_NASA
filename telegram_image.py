@@ -21,7 +21,8 @@ def main():
     else:
         file_path = 'NewImages/' + image_name
     with open(file_path,'rb') as file_image:
-        bot.send_document(chat_id='@NASA_images_2023', document=file_image)
+        user_chat_id = os.getenv("CHAT_ID")
+        bot.send_document(chat_id=user_chat_id, document=file_image)
     file_image.closed
 
 
