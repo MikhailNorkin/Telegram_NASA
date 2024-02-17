@@ -26,7 +26,6 @@ def main():
             patch_image = """NewImages/{nasa_files}""".format(nasa_files=nasa_files[0])
             with open(patch_image,'rb') as file_image:
                 bot.send_document(chat_id=user_chat_id, document=file_image)
-            file_image.closed
             del nasa_files[0]
             time.sleep(seconds_sleep)
 

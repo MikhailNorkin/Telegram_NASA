@@ -23,7 +23,6 @@ def main():
     with open(file_path,'rb') as file_image:
         user_chat_id = os.getenv("CHAT_ID")
         bot.send_document(chat_id=user_chat_id, document=file_image)
-    file_image.closed
 
 
 if __name__ == '__main__':
