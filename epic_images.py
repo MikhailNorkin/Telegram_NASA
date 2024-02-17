@@ -30,7 +30,6 @@ def main():
     params = urllib.parse.urlencode({'date': launch_date, 'api_key': token})
     response = requests.get(url, params=params)
     response.raise_for_status()
-    print(response.text)
     nasa_pictures = response.json()
 
     for jpg_number, jpg_url in enumerate(nasa_pictures):

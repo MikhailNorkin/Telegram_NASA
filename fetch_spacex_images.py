@@ -7,11 +7,7 @@ import download
 
 
 def fetch_last_launch_spacex(launch):
-    def_url = 'https://api.spacexdata.com/v5/launches/'
-    if launch == "":
-        url_spacex = f"{def_url}5eb87d47ffd86e000604b38a"
-    else:
-        url_spacex = f"{def_url}{launch}"    
+    url_spacex = f"https://api.spacexdata.com/v5/launches/{launch}"    
     response = requests.get(url_spacex)
     response.raise_for_status()
     return response.json()['links']['flickr']['original']
@@ -19,8 +15,9 @@ def fetch_last_launch_spacex(launch):
 
 def main():
     parser = argparse.ArgumentParser(description='Image search on nasa.gov spacexdata.com')
-    parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="")
+    parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="5eb87d47ffd86e000604b38a")
     arg = parser.parse_args()
+    print(arg.launch)
     jpgs_spacex = fetch_last_launch_spacex(arg.launch)
     folder_name = "Images"
     os.makedirs(folder_name, exist_ok=True) 
