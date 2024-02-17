@@ -18,8 +18,7 @@ def main():
     nasa_files = []
     user_chat_id = os.getenv("CHAT_ID")
     while True:
-        list_count = len(nasa_files)
-        if not list_count:
+        if not len(nasa_files):
             for root, dirs, nasa_files in os.walk('NewImages/'):
                 random.shuffle(nasa_files)   
         else:
