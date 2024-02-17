@@ -16,6 +16,7 @@ def main():
     arg = parser.parse_args()
     seconds_sleep = arg.seconds_sleep
     nasa_files = []
+    user_chat_id = os.getenv("CHAT_ID")
     while True:
         list_count = len(nasa_files)
         if not list_count:
@@ -24,7 +25,7 @@ def main():
         else:
             patch_image = """NewImages/{nasa_files}""".format(nasa_files=nasa_files[0])
             with open(patch_image,'rb') as file_image:
-                bot.send_document(chat_id='@NASA_images_2023', document=file_image)
+                bot.send_document(chat_id=user_chat_id, document=file_image)
             file_image.closed
             del nasa_files[0]
             time.sleep(seconds_sleep)
