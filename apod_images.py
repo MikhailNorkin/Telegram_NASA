@@ -26,12 +26,12 @@ def main():
         media_type = jpg_url['media_type']
         if media_type != 'image':
             continue
-        jpg_url_name = jpg_url['url']
-        url_split = urlsplit(jpg_url_name)
+        jpg_path = jpg_url['url']
+        url_split = urlsplit(jpg_path)
         extension_url = os.path.splitext(url_split[2])[1]
         file_name = "spacex {jpg_number} {extension_url}".format(jpg_number=jpg_number, extension_url=extension_url)
         file_path = os.path.join(folder_name, file_name)
-        download.download_image(jpg_url_name, file_path)
+        download.download_image(jpg_path, file_path)
 
 
 if __name__ == '__main__':
