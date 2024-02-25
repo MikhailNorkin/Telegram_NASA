@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 
 def get_nasa_pictures(api_token):
     url = 'https://api.nasa.gov/planetary/apod'
-    number_photos = 30
-    query_params = {'api_key': api_token, 'count': number_photos}
+    photos_number = 30
+    query_params = {'api_key': api_token, 'count': photos_number}
     response = requests.get(url, params=query_params)
     response.raise_for_status()
     return response.json()
@@ -30,8 +30,8 @@ def main():
         url_split = urlsplit(jpg_url_name)
         extension_url = os.path.splitext(url_split[2])[1]
         file_name = "spacex {jpg_number} {extension_url}".format(jpg_number=jpg_number, extension_url=extension_url)
-        path_file = os.path.join(folder_name, file_name)
-        download.download_image(jpg_url_name, path_file)
+        file_path = os.path.join(folder_name, file_name)
+        download.download_image(jpg_url_name, file_path)
 
 
 if __name__ == '__main__':
