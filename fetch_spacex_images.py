@@ -17,7 +17,6 @@ def main():
     parser = argparse.ArgumentParser(description='Image search on nasa.gov spacexdata.com')
     parser.add_argument("-l", "--launch", type=str, help="Enter the launch number", default="5eb87d47ffd86e000604b38a")
     arg = parser.parse_args()
-    print(arg.launch)
     jpgs_spacex = fetch_last_launch_spacex(arg.launch)
     folder_name = "Images"
     os.makedirs(folder_name, exist_ok=True) 
