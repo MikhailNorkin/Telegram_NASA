@@ -16,7 +16,7 @@ def main():
     arg = parser.parse_args()
     seconds_sleep = arg.seconds_sleep
     nasa_files = []
-    user_chat_id = os.getenv("CHAT_ID")
+    user_chat_id = os.getenv("TELEGRAM_CHAT_ID")
     while True:
         if not len(nasa_files):
             for root, dirs, nasa_files in os.walk('NewImages/'):
